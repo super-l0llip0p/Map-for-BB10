@@ -95,28 +95,28 @@ public class MapActivity extends Activity implements View.OnClickListener, AMapN
         mMapView = findViewById(R.id.mapview);
         mMapView.onCreate(savedInstanceState);
         mNearbyButton = findViewById(R.id.nearby_button);
-        mNearbyView   = findViewById(R.id.nearby_gridview);
-        mSearchBar    = findViewById(R.id.search_bar);
+        mNearbyView = findViewById(R.id.nearby_gridview);
+        mSearchBar = findViewById(R.id.search_bar);
         mSearchButton = findViewById(R.id.search_button);
-        mToTitleText  = findViewById(R.id.to_address);
+        mToTitleText = findViewById(R.id.to_address);
         mToSubtitleText = findViewById(R.id.to_distance);
-        mToRouteButton  = findViewById(R.id.select_route_button);
+        mToRouteButton = findViewById(R.id.select_route_button);
         mToNavigationButton = findViewById(R.id.navigation_button);
         mToCloseButton = findViewById(R.id.close_button);
         mToView = findViewById(R.id.to_windows);
-        mRouteTypeView    = findViewById(R.id.route_type_view);
-        mRouteTypeGroup   = findViewById(R.id.route_type_group);
+        mRouteTypeView = findViewById(R.id.route_type_view);
+        mRouteTypeGroup = findViewById(R.id.route_type_group);
         mDriveRouteButton = findViewById(R.id.drive_route_button);
-        mBusRouteButton   = findViewById(R.id.bus_route_button);
+        mBusRouteButton = findViewById(R.id.bus_route_button);
         mLayersButton = findViewById(R.id.layers_button);
         mLayersButton.setOnClickListener(this);
         mRoadConditionsButton = findViewById(R.id.road_conditions_button);
         mRoadConditionsButton.setOnClickListener(this);
 
         ImageButton locationButton = findViewById(R.id.location_button);
-        ImageButton zoomInButton   = findViewById(R.id.zoom_in_button);
-        ImageButton zoomOutButton  = findViewById(R.id.zoom_out_button);
-        ImageButton moreButton     = findViewById(R.id.more_button);
+        ImageButton zoomInButton = findViewById(R.id.zoom_in_button);
+        ImageButton zoomOutButton = findViewById(R.id.zoom_out_button);
+        ImageButton moreButton = findViewById(R.id.more_button);
         locationButton.setOnClickListener(this);
         zoomInButton.setOnClickListener(this);
         zoomOutButton.setOnClickListener(this);
@@ -126,6 +126,7 @@ public class MapActivity extends Activity implements View.OnClickListener, AMapN
     private boolean isSatelliteMapEnable = false;
     private boolean isTrafficEnabled = false;
     protected boolean isFirstLocation = true;
+
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
@@ -162,67 +163,130 @@ public class MapActivity extends Activity implements View.OnClickListener, AMapN
     }
 
     @Override
-    public void onInitNaviFailure() {}
+    public void onInitNaviFailure() {
+    }
+
     @Override
-    public void onInitNaviSuccess() {}
+    public void onInitNaviSuccess() {
+    }
+
     @Override
-    public void onStartNavi(int i) {}
+    public void onStartNavi(int i) {
+    }
+
     @Override
-    public void onTrafficStatusUpdate() {}
+    public void onTrafficStatusUpdate() {
+    }
+
     @Override
-    public void onLocationChange(AMapNaviLocation aMapNaviLocation) {}
+    public void onLocationChange(AMapNaviLocation aMapNaviLocation) {
+    }
+
     @Override
-    public void onGetNavigationText(int i, String s) {}
+    public void onGetNavigationText(int i, String s) {
+    }
+
     @Override
-    public void onGetNavigationText(String s) {}
+    public void onGetNavigationText(String s) {
+    }
+
     @Override
-    public void onEndEmulatorNavi() {}
+    public void onEndEmulatorNavi() {
+    }
+
     @Override
-    public void onArriveDestination() {}
+    public void onArriveDestination() {
+    }
+
     @Override
-    public void onCalculateRouteFailure(int i) {}
+    public void onCalculateRouteFailure(int i) {
+    }
+
     @Override
-    public void onReCalculateRouteForYaw() {}
+    public void onReCalculateRouteForYaw() {
+    }
+
     @Override
-    public void onReCalculateRouteForTrafficJam() {}
+    public void onReCalculateRouteForTrafficJam() {
+    }
+
     @Override
-    public void onArrivedWayPoint(int i) {}
+    public void onArrivedWayPoint(int i) {
+    }
+
     @Override
-    public void onGpsOpenStatus(boolean b) {}
+    public void onGpsOpenStatus(boolean b) {
+    }
+
     @Override
-    public void onNaviInfoUpdate(NaviInfo naviInfo) {}
+    public void onNaviInfoUpdate(NaviInfo naviInfo) {
+    }
+
     @Override
-    public void onNaviInfoUpdated(AMapNaviInfo aMapNaviInfo) {}
+    public void onNaviInfoUpdated(AMapNaviInfo aMapNaviInfo) {
+    }
+
     @Override
-    public void updateCameraInfo(AMapNaviCameraInfo[] aMapNaviCameraInfos) {}
+    public void updateCameraInfo(AMapNaviCameraInfo[] aMapNaviCameraInfos) {
+    }
+
     @Override
-    public void onServiceAreaUpdate(AMapServiceAreaInfo[] aMapServiceAreaInfos) {}
+    public void onServiceAreaUpdate(AMapServiceAreaInfo[] aMapServiceAreaInfos) {
+    }
+
     @Override
-    public void showCross(AMapNaviCross aMapNaviCross) {}
+    public void showCross(AMapNaviCross aMapNaviCross) {
+    }
+
     @Override
-    public void hideCross() {}
+    public void hideCross() {
+    }
+
     @Override
-    public void showModeCross(AMapModelCross aMapModelCross) {}
+    public void showModeCross(AMapModelCross aMapModelCross) {
+    }
+
     @Override
-    public void hideModeCross() {}
+    public void hideModeCross() {
+    }
+
     @Override
-    public void showLaneInfo(AMapLaneInfo[] aMapLaneInfos, byte[] bytes, byte[] bytes1) {}
+    public void showLaneInfo(AMapLaneInfo[] aMapLaneInfos, byte[] bytes, byte[] bytes1) {
+    }
+
     @Override
-    public void hideLaneInfo() {}
+    public void hideLaneInfo() {
+    }
+
     @Override
-    public void onCalculateRouteSuccess(int[] ints) {}
+    public void onCalculateRouteSuccess(int[] ints) {
+    }
+
     @Override
-    public void notifyParallelRoad(int i) {}
+    public void notifyParallelRoad(int i) {
+    }
+
     @Override
-    public void OnUpdateTrafficFacility(AMapNaviTrafficFacilityInfo aMapNaviTrafficFacilityInfo) {}
+    public void OnUpdateTrafficFacility(AMapNaviTrafficFacilityInfo aMapNaviTrafficFacilityInfo) {
+    }
+
     @Override
-    public void OnUpdateTrafficFacility(AMapNaviTrafficFacilityInfo[] aMapNaviTrafficFacilityInfos) {}
+    public void OnUpdateTrafficFacility(AMapNaviTrafficFacilityInfo[] aMapNaviTrafficFacilityInfos) {
+    }
+
     @Override
-    public void OnUpdateTrafficFacility(TrafficFacilityInfo trafficFacilityInfo) {}
+    public void OnUpdateTrafficFacility(TrafficFacilityInfo trafficFacilityInfo) {
+    }
+
     @Override
-    public void updateAimlessModeStatistics(AimLessModeStat aimLessModeStat) {}
+    public void updateAimlessModeStatistics(AimLessModeStat aimLessModeStat) {
+    }
+
     @Override
-    public void updateAimlessModeCongestionInfo(AimLessModeCongestionInfo aimLessModeCongestionInfo) {}
+    public void updateAimlessModeCongestionInfo(AimLessModeCongestionInfo aimLessModeCongestionInfo) {
+    }
+
     @Override
-    public void onPlayRing(int i) {}
+    public void onPlayRing(int i) {
+    }
 }

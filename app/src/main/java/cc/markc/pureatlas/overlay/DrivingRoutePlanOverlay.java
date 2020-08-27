@@ -16,7 +16,7 @@ import com.amap.api.services.route.TimeInfo;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DrivingRoutePlanOverlay extends RouteOverlay{
+public class DrivingRoutePlanOverlay extends RouteOverlay {
 
     private Context mContext;
 
@@ -33,14 +33,14 @@ public class DrivingRoutePlanOverlay extends RouteOverlay{
     public DrivingRoutePlanOverlay(Context context, AMap amap, DriveRoutePlanResult result, int index) {
         super(context);
 
-        mContext                = context;
-        mAMap                   = amap;
-        driveRoutePlanResult    = result;
-        selectIndex             = index;
+        mContext = context;
+        mAMap = amap;
+        driveRoutePlanResult = result;
+        selectIndex = index;
 
         if (result != null) {
-            startPoint          = AMapUtil.convertToLatLng(result.getStartPos());
-            endPoint            = AMapUtil.convertToLatLng(result.getTargetPos());
+            startPoint = AMapUtil.convertToLatLng(result.getStartPos());
+            endPoint = AMapUtil.convertToLatLng(result.getTargetPos());
         }
     }
 
@@ -103,10 +103,10 @@ public class DrivingRoutePlanOverlay extends RouteOverlay{
             }
             addStartAndEndMarker();
 
-            if (isColorfulline && tmcs.size()>0 ) {
+            if (isColorfulline && tmcs.size() > 0) {
                 colorWayUpdate(tmcs);
                 showcolorPolyline();
-            }else {
+            } else {
                 showPolyline();
             }
 
@@ -184,6 +184,6 @@ public class DrivingRoutePlanOverlay extends RouteOverlay{
     }
 
     public LatLng convertToLatLng(LatLonPoint point) {
-        return new LatLng(point.getLatitude(),point.getLongitude());
+        return new LatLng(point.getLatitude(), point.getLongitude());
     }
 }

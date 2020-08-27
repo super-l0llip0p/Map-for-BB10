@@ -155,8 +155,8 @@ public class MainActivity extends MapActivity implements RadioGroup.OnCheckedCha
                 this,
                 getNearbyGridViewData(),
                 R.layout.item_nearby,
-                new String[] { "title" },
-                new int[] { R.id.nearby_item_button });
+                new String[]{"title"},
+                new int[]{R.id.nearby_item_button});
         mNearbyView.setAdapter(adapter);
         mNearbyView.setOnItemClickListener(this);
     }
@@ -224,8 +224,7 @@ public class MainActivity extends MapActivity implements RadioGroup.OnCheckedCha
         int strategy = 0;
         try {
             strategy = mNavi.strategyConvert(true, false, false, false, true);
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
         if (strategy >= 0) {
@@ -283,8 +282,7 @@ public class MainActivity extends MapActivity implements RadioGroup.OnCheckedCha
                     mMyMarker = mMap.addMarker(new MarkerOptions()
                             .position(latLng)
                             .icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_marker)));
-                }
-                else {
+                } else {
                     mMyMarker.setPosition(latLng);
                 }
                 if (isFirstLocation) {
@@ -373,8 +371,7 @@ public class MainActivity extends MapActivity implements RadioGroup.OnCheckedCha
             case R.id.select_route_button:
                 if (mDriveRouteButton.isChecked()) {
                     changeDriveRoute();
-                }
-                else if (mBusRouteButton.isChecked()) {
+                } else if (mBusRouteButton.isChecked()) {
                     changeBusRoute();
                 }
                 break;
@@ -473,13 +470,11 @@ public class MainActivity extends MapActivity implements RadioGroup.OnCheckedCha
             int bottom = top + v.getHeight();
             int right = left + v.getWidth();
             if (event.getX() > left &&
-                event.getX() < right &&
-                event.getY() > top &&
-                event.getY() < bottom) {
+                    event.getX() < right &&
+                    event.getY() > top &&
+                    event.getY() < bottom) {
                 return false;
-            }
-            else
-            {
+            } else {
                 return isInputMethodActive();
             }
         }
@@ -498,6 +493,7 @@ public class MainActivity extends MapActivity implements RadioGroup.OnCheckedCha
     }
 
     private List<Marker> mPoiMarkerList = new ArrayList<>();
+
     @Override
     public void onPoiSearched(PoiResult poiResult, int i) {
         if (i == SUCCESS) {
@@ -590,8 +586,8 @@ public class MainActivity extends MapActivity implements RadioGroup.OnCheckedCha
         mMap.animateCamera(CameraUpdateFactory.newLatLngBounds(path.getBoundsForPath(), mZoomToSpanPadding));
         mToSubtitleText.setText(
                 path.getLabels() + " | " +
-                "距您 " + Common.getFormatDistance(path.getAllLength()) + " | " +
-                "需要约 " + Common.getFormatTime(path.getAllTime()));
+                        "距您 " + Common.getFormatDistance(path.getAllLength()) + " | " +
+                        "需要约 " + Common.getFormatTime(path.getAllTime()));
         mDriveRouteIndex++;
     }
     // 驾车路线图层 <
@@ -630,8 +626,7 @@ public class MainActivity extends MapActivity implements RadioGroup.OnCheckedCha
                 }
             }
             mToRouteButton.setVisibility(paths.size() > 1 ? View.VISIBLE : View.GONE);
-        }
-        else {
+        } else {
             mRouteTypeGroup.clearCheck();
         }
     }
@@ -648,15 +643,22 @@ public class MainActivity extends MapActivity implements RadioGroup.OnCheckedCha
     // 公交路线图层 <
 
     @Override
-    public void onGeocodeSearched(GeocodeResult geocodeResult, int i) {}
+    public void onGeocodeSearched(GeocodeResult geocodeResult, int i) {
+    }
 
     @Override
-    public void onPoiItemSearched(PoiItem poiItem, int i) {}
+    public void onPoiItemSearched(PoiItem poiItem, int i) {
+    }
 
     @Override
-    public void onDriveRouteSearched(DriveRouteResult driveRouteResult, int i) {}
+    public void onDriveRouteSearched(DriveRouteResult driveRouteResult, int i) {
+    }
+
     @Override
-    public void onWalkRouteSearched(WalkRouteResult walkRouteResult, int i) {}
+    public void onWalkRouteSearched(WalkRouteResult walkRouteResult, int i) {
+    }
+
     @Override
-    public void onRideRouteSearched(RideRouteResult rideRouteResult, int i) {}
+    public void onRideRouteSearched(RideRouteResult rideRouteResult, int i) {
+    }
 }

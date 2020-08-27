@@ -25,9 +25,9 @@ import cc.markc.pureatlas.R;
 /**
  * 导航路线图层类。
  */
-public class TruckRouteColorfulOverLay extends RouteOverlay{
+public class TruckRouteColorfulOverLay extends RouteOverlay {
 
-	private TruckPath truckPath;
+    private TruckPath truckPath;
     private List<LatLonPoint> throughPointList;
     private List<Marker> throughPointMarkerList = new ArrayList<Marker>();
     private boolean throughPointMarkerVisible = true;
@@ -38,22 +38,22 @@ public class TruckRouteColorfulOverLay extends RouteOverlay{
     private float mWidth = 17;
     private List<LatLng> mLatLngsOfPath;
 
-	public void setIsColorfulline(boolean iscolorfulline) {
-		this.isColorfulline = iscolorfulline;
-	}
+    public void setIsColorfulline(boolean iscolorfulline) {
+        this.isColorfulline = iscolorfulline;
+    }
 
-	/**
+    /**
      * 根据给定的参数，构造一个导航路线图层类对象。
      *
-     * @param amap      地图对象。
-     * @param path 导航路线规划方案。
-     * @param context   当前的activity对象。
+     * @param amap    地图对象。
+     * @param path    导航路线规划方案。
+     * @param context 当前的activity对象。
      */
     public TruckRouteColorfulOverLay(Context context, AMap amap, TruckPath path,
                                      LatLonPoint start, LatLonPoint end, List<LatLonPoint> throughPointList) {
-    	super(context);
-    	mContext = context; 
-        mAMap = amap; 
+        super(context);
+        mContext = context;
+        mAMap = amap;
         this.truckPath = path;
         startPoint = AMapUtil.convertToLatLng(start);
         endPoint = AMapUtil.convertToLatLng(end);
@@ -77,8 +77,8 @@ public class TruckRouteColorfulOverLay extends RouteOverlay{
     /**
      * 添加驾车路线添加到地图上显示。
      */
-	public void addToMap() {
-		initPolylineOptions();
+    public void addToMap() {
+        initPolylineOptions();
         try {
             if (mAMap == null) {
                 return;
@@ -96,9 +96,9 @@ public class TruckRouteColorfulOverLay extends RouteOverlay{
                 tmcs.addAll(tmclist);
 
                 for (LatLonPoint latlonpoint : latlonPoints) {
-                	mPolylineOptions.add(convertToLatLng(latlonpoint));
-                	mLatLngsOfPath.add(convertToLatLng(latlonpoint));
-				}
+                    mPolylineOptions.add(convertToLatLng(latlonpoint));
+                    mLatLngsOfPath.add(convertToLatLng(latlonpoint));
+                }
             }
             if (startMarker != null) {
                 startMarker.remove();
@@ -110,14 +110,14 @@ public class TruckRouteColorfulOverLay extends RouteOverlay{
             }
             addStartAndEndMarker();
             addThroughPointMarker();
-            if (isColorfulline && tmcs.size()>0 ) {
-            	colorWayUpdate(tmcs);
-			}else {
-				showPolyline();
-			}            
-            
+            if (isColorfulline && tmcs.size() > 0) {
+                colorWayUpdate(tmcs);
+            } else {
+                showPolyline();
+            }
+
         } catch (Throwable e) {
-        	e.printStackTrace();
+            e.printStackTrace();
         }
     }
 
@@ -135,7 +135,7 @@ public class TruckRouteColorfulOverLay extends RouteOverlay{
     private void showPolyline() {
         addPolyLine(mPolylineOptions);
     }
-    
+
 
     /**
      * 根据不同的路段拥堵情况展示不同的颜色
@@ -160,10 +160,10 @@ public class TruckRouteColorfulOverLay extends RouteOverlay{
         List<LatLng> tempList = new ArrayList<LatLng>();
         //画出起点到规划路径之间的连线
         addPolyLine(new PolylineOptions().add(startPoint, startLatLng)
-				.setDottedLine(true));
+                .setDottedLine(true));
         //终点和规划路径之间连线
-        addPolyLine(new PolylineOptions().add(mLatLngsOfPath.get(mLatLngsOfPath.size()-1), 
-        		endPoint).setDottedLine(true));
+        addPolyLine(new PolylineOptions().add(mLatLngsOfPath.get(mLatLngsOfPath.size() - 1),
+                endPoint).setDottedLine(true));
         for (int i = 0; i < mLatLngsOfPath.size() && j < tmcSection.size(); i++) {
             segmentTrafficStatus = tmcSection.get(j);
             endLatLng = mLatLngsOfPath.get(i);
@@ -188,36 +188,36 @@ public class TruckRouteColorfulOverLay extends RouteOverlay{
                 }
                 j++;
                 if (segmentTrafficStatus.getStatus().equals("畅通")) {
-                	addPolyLine((new PolylineOptions()).addAll(tempList)
+                    addPolyLine((new PolylineOptions()).addAll(tempList)
                             .width(mWidth).color(Color.GREEN));
-				} else if (segmentTrafficStatus.getStatus().equals("缓行")) {
-					addPolyLine((new PolylineOptions()).addAll(tempList)
+                } else if (segmentTrafficStatus.getStatus().equals("缓行")) {
+                    addPolyLine((new PolylineOptions()).addAll(tempList)
                             .width(mWidth).color(Color.YELLOW));
-				} else if (segmentTrafficStatus.getStatus().equals("拥堵")) {
-					addPolyLine((new PolylineOptions()).addAll(tempList)
-                             .width(mWidth).color(Color.RED));
-				} else if (segmentTrafficStatus.getStatus().equals("严重拥堵")) {
-					addPolyLine((new PolylineOptions()).addAll(tempList)
+                } else if (segmentTrafficStatus.getStatus().equals("拥堵")) {
+                    addPolyLine((new PolylineOptions()).addAll(tempList)
+                            .width(mWidth).color(Color.RED));
+                } else if (segmentTrafficStatus.getStatus().equals("严重拥堵")) {
+                    addPolyLine((new PolylineOptions()).addAll(tempList)
                             .width(mWidth).color(Color.parseColor("#990033")));
-				} else {
-					addPolyLine((new PolylineOptions()).addAll(tempList)
+                } else {
+                    addPolyLine((new PolylineOptions()).addAll(tempList)
                             .width(mWidth).color(Color.parseColor("#537edc")));
-				}
+                }
                 tempList.clear();
                 tempList.add(startLatLng);
                 segmentTotalDistance = 0;
             }
-           if (i == mLatLngsOfPath.size() - 1) {
-        	   addPolyLine(new PolylineOptions().add(endLatLng, endPoint)
-        			   .setDottedLine(true));
-		} 
+            if (i == mLatLngsOfPath.size() - 1) {
+                addPolyLine(new PolylineOptions().add(endLatLng, endPoint)
+                        .setDottedLine(true));
+            }
         }
     }
-    
+
     public LatLng convertToLatLng(LatLonPoint point) {
-        return new LatLng(point.getLatitude(),point.getLongitude());
-  }
-    
+        return new LatLng(point.getLatitude(), point.getLongitude());
+    }
+
     /**
      * @param driveStep
      * @param latLng
@@ -260,7 +260,7 @@ public class TruckRouteColorfulOverLay extends RouteOverlay{
             e.printStackTrace();
         }
     }
-    
+
     private void addThroughPointMarker() {
         if (this.throughPointList != null && this.throughPointList.size() > 0) {
             LatLonPoint latLonPoint = null;
@@ -280,10 +280,10 @@ public class TruckRouteColorfulOverLay extends RouteOverlay{
             }
         }
     }
-    
+
     private BitmapDescriptor getThroughPointBitDes() {
-    	return BitmapDescriptorFactory.fromResource(R.drawable.amap_through);
-       
+        return BitmapDescriptorFactory.fromResource(R.drawable.amap_through);
+
     }
 
     /**
@@ -331,6 +331,7 @@ public class TruckRouteColorfulOverLay extends RouteOverlay{
         double preResult = dis / lSegLength;
         return new LatLng((ePt.latitude - sPt.latitude) * preResult + sPt.latitude, (ePt.longitude - sPt.longitude) * preResult + sPt.longitude);
     }
+
     /**
      * 去掉DriveLineOverlay上的线段和标记。
      */
